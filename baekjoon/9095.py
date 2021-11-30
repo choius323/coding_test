@@ -12,7 +12,7 @@
 1 2 3 6 11 20
  1 1 3 5 9
 
-
+---------------
 
 A(1) = 1
 A(2) = 2
@@ -32,12 +32,12 @@ https://jyami.tistory.com/15
 
 T = int(input())
 n = []
-answer = [1,2,4]
+answer = [1, 2, 4]
 for _ in range(T):
     n.append(int(input()))
 
 for a in range(3, max(n)):
-    answer.append(answer[a-1] + answer[a-2] + answer[a-3])
+    answer.append(answer[a - 1] + answer[a - 2] + answer[a - 3])
 
-for a in n :
-    print(answer[a-1])
+for a in n:
+    print(answer[a - 1])
