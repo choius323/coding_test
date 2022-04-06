@@ -1,4 +1,4 @@
 * linguist-vendored
-*.py linguist-vendored=false
-*.kt linguist-vendored=false
-*.java linguist-vendored=false
+*.py linguist-vendored=true
+*.kt linguist-vendored=true
+*.java linguist-vendored=true
