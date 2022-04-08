@@ -14,9 +14,9 @@ package baekjoon_kotlin
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
-val graph = HashMap<Int, IntArray>()
+private val graph = HashMap<Int, IntArray>()
 private val sb = StringBuilder()
-val visited = HashMap<Int, Int>()
+private val visited = HashMap<Int, Int>()
 
 fun main() {
     val br = BufferedReader(InputStreamReader(System.`in`))

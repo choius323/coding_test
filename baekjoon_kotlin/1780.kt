@@ -15,8 +15,8 @@ package baekjoon_kotlin
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
-var answer = Array(3) { 0 }
-lateinit var paper: Array<IntArray>
+private var answer = Array(3) { 0 }
+private lateinit var paper: Array<IntArray>
 
 fun main() {
     val br = BufferedReader(InputStreamReader(System.`in`))
