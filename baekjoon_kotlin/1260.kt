@@ -41,7 +41,7 @@ fun main() {
     println(sb)
 }
 
-fun basicDfs(nextVisit: Int) {
+private fun basicDfs(nextVisit: Int) {
     visited[nextVisit] = 0
     sb.append("$nextVisit ")
     if (visited.size == graph.keys.size) {
@@ -55,7 +55,7 @@ fun basicDfs(nextVisit: Int) {
     }
 }
 
-fun basicBfs(v: Int) {
+private fun basicBfs(v: Int) {
     val queue = ArrayDeque<Int>()
     queue.add(v)
     visited[v] = 0
