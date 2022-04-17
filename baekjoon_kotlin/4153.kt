@@ -37,4 +37,4 @@ fun main() {
     }
 }
 
-fun pow(a: Int, b: Int = 0) = a.toDouble().pow(2) + b.toDouble().pow(2)
+private fun pow(a: Int, b: Int = 0) = a.toDouble().pow(2) + b.toDouble().pow(2)
