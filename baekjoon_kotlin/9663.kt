@@ -55,41 +55,34 @@ fun main() {
     print(put(0))
 }
 
-//fun main() = System.`in`.bufferedReader().run {
-//    val n = readLine().toInt()
-//    val board = IntArray(n * n)
+//import kotlin.math.abs
+//
+//fun main() {
+//    val n = readLine()!!.toInt()
+//    val queen = java.util.LinkedList<Pair<Int,Int>>() // 퀸의 위치 저장(x,y)
 //    var answer = 0
 //
-//    fun addBoard(a: Int, x: Int, y: Int) {
-//        for (i in 0 until n) {
-//            board[x + n * i] += a
-//            board[i + n * y] += a
-//        }
-//        for (i in -minOf(x, y) until n - maxOf(x, y)) {
-//            board[x + i + n * (y + i)] += a
-//        }
-//        for (i in -minOf(x, n - 1 - y)..minOf(n - 1 - x, y)) {
-//            board[x + i + n * (y - i)] += a
-//        }
-//        board[x + n * y] += a * 30
-//    }
-//
-//    fun put(count: Int, prevIndex: Int) {
-//        if (count == n) answer += 1
-//        else {
-//            for (i in prevIndex until n * n) {
-//                if (n - count <= n * n - i) {
-//                    if (board[i] == 0) {
-//                        addBoard(1, i % n, i / n)
-//                        put(count + 1, (i + n) / n * n)
-//                        addBoard(-1, i % n, i / n)
+//    fun put(ny: Int) {
+//        if (ny == n) answer += 1
+//        else if (ny < n) {
+//            for (nx in 0 until n) {
+//                var isPut = true // 겹치는지 여부 확인
+//                for ((x, y) in queen) {
+//                    if (nx == x || abs(nx - x) == abs(ny - y)) { // x좌표가 같거나, 대각선에 있거나
+//                        isPut = false
+//                        break
 //                    }
-//                } else break
+//                }
+//                if (isPut) { // 겹치는게 없다면
+//                    queen.add(nx to ny)
+//                    put(ny + 1)
+//                    queen.removeLast()
+//                }
 //            }
 //        }
 //    }
 //
-//    put(0, 0)
+//    put(0)
 //    print(answer)
 //}
 
