@@ -44,8 +44,8 @@ fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
             sub.add(node)
         }
     }
-    println(tree)
-    println(remove)
+//    println(tree)
+//    println(remove)
     print(n - tree.size - remove.size) // 전체 노드 - 리프 노드를 제외한 삭제되지 않은 노드 - 삭제된 노드
 }
 
