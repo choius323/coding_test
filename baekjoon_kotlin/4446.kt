@@ -30,7 +30,7 @@ https://www.acmicpc.net/problem/4446
 //}
 
 // 바뀔 문자를 텍스트에 넣고 출력. 출처 : https://www.acmicpc.net/source/40717809
-val t=" !\"#\$%&'()*+,-./0123456789:;<=>?@EPLRAGFSOXVCWTIBZDHNYKMJUQ[\\]^_`eplragfsoxvcwtibzdhnykmjuq{|}"
+private val t=" !\"#\$%&'()*+,-./0123456789:;<=>?@EPLRAGFSOXVCWTIBZDHNYKMJUQ[\\]^_`eplragfsoxvcwtibzdhnykmjuq{|}"
 fun main()=System.`in`.bufferedReader().run{print(StringBuilder().apply{readText().forEach{append(if(it=='\n')it else t[it-' '])}})}
 
 // 출처 : https://www.acmicpc.net/source/40717809
