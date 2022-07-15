@@ -50,32 +50,32 @@ fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
 
 
 // 출처 : https://www.acmicpc.net/source/40253462
-fun main2() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
-    fun i(): Int {
-        nextToken(); return nval.toInt()
-    }
-
-    val c = i()
-    val n = i()
-    var max = 0
-    val ads = Array(n) {
-        val cost = i()
-        val people = i()
-        if (max < people) max = people
-        cost to people
-    } // 비용 to 인원
-    val dp = IntArray(c + max + 1) { 100000 }
-    dp[0] = 0
-
-    for (i in 1..c + max) // 인원 배열
-        for (j in 0 until n) // 홍보
-            if (i >= ads[j].second) // 홍보를 할 수 있는지 확인
-                dp[i] = minOf(dp[i], dp[i - ads[j].second] + ads[j].first)
-    var ans = dp[c]
-    for (i in c + 1..c + max)
-        if (ans > dp[i]) ans = dp[i]
-    print(ans)
-}
+//fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
+//    fun i(): Int {
+//        nextToken(); return nval.toInt()
+//    }
+//
+//    val c = i()
+//    val n = i()
+//    var max = 0
+//    val ads = Array(n) {
+//        val cost = i()
+//        val people = i()
+//        if (max < people) max = people
+//        cost to people
+//    } // 비용 to 인원
+//    val dp = IntArray(c + max + 1) { 100000 }
+//    dp[0] = 0
+//
+//    for (i in 1..c + max) // 인원 배열
+//        for (j in 0 until n) // 홍보
+//            if (i >= ads[j].second) // 홍보를 할 수 있는지 확인
+//                dp[i] = minOf(dp[i], dp[i - ads[j].second] + ads[j].first)
+//    var ans = dp[c]
+//    for (i in c + 1..c + max)
+//        if (ans > dp[i]) ans = dp[i]
+//    print(ans)
+//}
 
 /*
 100 1
