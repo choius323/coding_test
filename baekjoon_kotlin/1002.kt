@@ -11,8 +11,6 @@ https://www.acmicpc.net/board/view/38854
 
 */
 
-package baekjoon_kotlin
-
 fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
     fun pow(n: Int) = n * n
     val sb = StringBuilder()
