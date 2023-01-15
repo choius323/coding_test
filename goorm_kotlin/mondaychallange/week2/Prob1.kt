@@ -1,4 +1,4 @@
-package goorm_kotlin.week2
+package goorm_kotlin.mondaychallange.week2
 
 fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
     val r = { nextToken(); nval.toInt() }
