@@ -8,8 +8,6 @@ map과 lambda 함수를 잘 활용해보자.
 
  */
 
-package baekjoon_kotlin
-
 fun main() {
     val str = readLine()!!
     val sb = StringBuilder()
@@ -24,10 +22,11 @@ fun main() {
             sb.append(c)
         }
     }
-    answer += if (minus == str.length) sb.toString().toInt() else - sb.toString().toInt()
+    answer += if (minus == str.length) sb.toString().toInt() else -sb.toString().toInt()
 
     println(answer)
     cal()
 }
 
-fun cal() = println(readLine()!!.split("-").map { it.split("+").sumOf { x -> x.toInt() } }.reduce { a, b -> a - b  })
+private fun cal() =
+    println(readLine()!!.split("-").map { it.split("+").sumOf { x -> x.toInt() } }.reduce { a, b -> a - b })
