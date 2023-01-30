@@ -1,4 +1,4 @@
-package goorm_kotlin.mondaychallange.week3
+package mondaychallange.week3
 
 
 import java.util.*

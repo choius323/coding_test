@@ -1,4 +1,4 @@
-package goorm_kotlin.mondaychallange.week2
+package mondaychallange.week2
 
 fun main() = System.`in`.bufferedReader().run {
     val n = readLine().toInt()
