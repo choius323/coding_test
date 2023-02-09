@@ -8,16 +8,13 @@ https://www.acmicpc.net/problem/25166
 
 */
 
-package baekjoon_kotlin
-
 import kotlin.math.pow
 
 fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
+    val r = { nextToken(); nval.toInt() }
     fun Int.pow(a: Int) = toDouble().pow(a).toInt()
-    nextToken()
-    val s = nval.toInt()
-    nextToken()
-    var m = nval.toInt()
+    val s = r()
+    var m = r()
     if (s <= 1023) print("No thanks")
     else {
         var need = s - 1023
@@ -25,8 +22,7 @@ fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
             val p = 2.pow(i)
             if (m >= p) {
                 m -= p
-                need -= p
-                if (need <= 0) break
+                if (need >= p) need -= p
             }
         }
         print(if (need == 0) "Thanks" else "Impossible")
