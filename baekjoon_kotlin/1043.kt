@@ -10,8 +10,7 @@ find에서 새로운 루트를 set[num]에 넣어주지 않거나 union에서 �
 
 */
 
-package baekjoon_kotlin
-
+//Union Find
 fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
     fun i(): Int {
         nextToken()
@@ -65,7 +64,7 @@ fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
         }
     }
 
-    repeat(n){find(it+1)}
+    repeat(n) { find(it + 1) }
     forLoop@ for (party in partyArr) {
         if (party.isNotEmpty()) {
             for (p in party) {
@@ -75,6 +74,42 @@ fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
             }
             answer += 1
         }
+    }
+    print(answer)
+}
+
+//bfs
+fun main2() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
+    val r = { nextToken();nval.toInt() }
+    val n = r()
+    val m = r()
+    val queue = ArrayDeque<Int>()
+    val visited = BooleanArray(n + 1)
+    val known = IntArray(r()) { r() }
+    val parties = Array(m) { IntArray(r()) { r() } }
+    val graph = Array(n + 1) { mutableListOf<Int>() }
+    for (party in parties) {
+        for (a in party) for (b in party) {
+            if (graph[a].contains(b).not()) graph[a].add(b)
+            if (graph[b].contains(a).not()) graph[b].add(a)
+        }
+    }
+    known.forEach {
+        visited[it] = true
+        queue.add(it)
+    }
+    while (queue.isNotEmpty()) {
+        val num = queue.removeFirst()
+        for (next in graph[num]) {
+            if (visited[next].not()) {
+                queue.add(next)
+                visited[next] = true
+            }
+        }
+    }
+    var answer = 0
+    for (party in parties) {
+        if (party.any { visited[it].not() }) answer++
     }
     print(answer)
 }

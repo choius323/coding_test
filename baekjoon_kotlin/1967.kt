@@ -8,9 +8,9 @@ BFS를 활용한 탐색을 2번 사용해서 풀었다.
 다익스트라는 그래프에서 가중치가 있거나 중간에 갱신해야 되는 경우에 사용해야 한다.
 단 트리는 사이클이 없기 때문에 BFS나 DFS를 사용해도 된다.
 
-*/
+https://koosaga.com/14
 
-package baekjoon_kotlin
+*/
 
 fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
     data class Node(val v: Int, val d: Int)
