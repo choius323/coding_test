@@ -16,6 +16,7 @@ https://moonsbeen.tistory.com/188
 
 */
 
+/*
 private inline val Char.idx get() = this - 'a' //a~z의 Char을 0~26으로 매핑
 fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
     val r = { nextToken();nval.toInt() }
@@ -51,6 +52,42 @@ fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
     }
 
     print(dfs(0, 0))
+}
+*/
+
+fun main() {
+    val (n, k) = readln().split(" ").map { it.toInt() }
+    val words = Array(n) { readln() }
+    val visited = BooleanArray('z' - 'a' + 1)
+
+    fun Char.idx() = this - 'a'
+
+    fun countWords(): Int {
+        return words.filter { word ->
+            word.all { char -> visited[char.idx()] }
+        }.size
+    }
+
+    fun dfs(count: Int, start: Int): Int {
+        if (count == k) {
+            return countWords()
+        } else if (count > k) {
+            return 0
+        }
+        var max = 0
+        for (idx in start..visited.lastIndex) {
+            if (visited[idx].not()) {
+                visited[idx] = true
+                max = maxOf(dfs(count + 1, idx + 1), max)
+                visited[idx] = false
+            }
+        }
+        return max
+    }
+
+    val default = "anta" + "tica"
+    (default).forEach { visited[it.idx()] = true }
+    print(dfs(default.toSet().size, 0))
 }
 
 /*

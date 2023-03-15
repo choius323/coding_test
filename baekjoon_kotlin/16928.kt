@@ -10,12 +10,12 @@ StreamTokenizer를 사용하는게 split.map을 사용하는 것보다 속도가
 
 */
 
-package baekjoon_kotlin
+/*
+fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
+    fun i(): Int {
+        nextToken();return nval.toInt()
+    }
 
-import java.io.StreamTokenizer
-
-fun main() = StreamTokenizer(System.`in`.bufferedReader()).run {
-    fun i():Int {nextToken();return nval.toInt()}
     val n = i()
     val m = i()
     val map = HashMap<Int, Int>()
@@ -46,6 +46,34 @@ fun main() = StreamTokenizer(System.`in`.bufferedReader()).run {
             }
         }
         answer += 1
+    }
+}
+*/
+
+fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
+    val r = { nextToken(); nval.toInt() }
+    val n = r()
+    val m = r()
+    val moves = IntArray(106) { it }
+    repeat(n + m) { moves[r()] = r() }
+    val queue = ArrayDeque<Int>()
+
+    queue.add(1)
+    moves[1] = 0
+    var count = 0
+    while (queue.isNotEmpty()) {
+        repeat(queue.size) {
+            val now = queue.removeFirst()
+            if (now == 100) return print(count)
+            for (dice in 6 downTo 1) {
+                val next = moves[now + dice]
+                if (next in 1..100) {
+                    queue.add(next)
+                    moves[next] = 0
+                }
+            }
+        }
+        count++
     }
 }
 

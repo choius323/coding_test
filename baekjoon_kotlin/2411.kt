@@ -12,7 +12,7 @@ https://www.acmicpc.net/problem/2411
 
 */
 
-fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
+/*fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
     data class Pos(val y: Int, val x: Int) // 좌표용 클래스
 
     fun i(): Int {
@@ -53,6 +53,42 @@ fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
         queue.add(item) // 현재 아이템을 시작으로 다음 아이템까지 이동
     }
     print(answer)
+}*/
+
+fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
+    data class Pos(val x: Int, val y: Int)
+
+    val r = { nextToken();nval.toInt() }
+    val n = r()
+    val m = r()
+    val a = r()
+    val b = r()
+    val board = Array(n + 1) { IntArray(m + 1) }
+    val goals = (Array(a) { Pos(y = r(), x = r()) } + Pos(m, n))
+        .sortedArrayWith(compareBy({ it.x }, { it.y }))
+    repeat(b) { board[r()][r()] = -1 }
+    val queue = ArrayDeque<Pos>()
+    queue.add(Pos(1, 1))
+    board[1][1] = 1
+
+    val dx = intArrayOf(1, 0)
+    val dy = intArrayOf(0, 1)
+    for (goal in goals) {
+        while (queue.isNotEmpty()) {
+            val now = queue.removeFirst()
+            for (d in dx.indices) {
+                val nx = now.x + dx[d]
+                val ny = now.y + dy[d]
+                if (nx in 1..goal.x && ny in 1..goal.y && board[ny][nx] != -1) {
+                    if (board[ny][nx] == 0)
+                        queue.add(Pos(nx, ny))
+                    board[ny][nx] += board[now.y][now.x]
+                }
+            }
+        }
+        queue.add(goal)
+    }
+    print(board[n][m])
 }
 
 /*
