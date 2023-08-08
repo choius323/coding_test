@@ -9,7 +9,7 @@ dp의 i번째 값은 dp의 i-1번째 값과 i번째 점수에 의해 결정된�
 
 */
 
-fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
+/*fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
     fun i(): Int {
         nextToken()
         return nval.toInt()
@@ -33,6 +33,22 @@ fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
         )
     }
     print("${maxDp.maxOf { it }} ${minDp.minOf { it }}")
+}*/
+
+fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
+    val r = { nextToken();nval.toInt() }
+    val dp = Array(3) { IntArray(2) }
+    repeat(r()) {
+        val newDp = Array(3) { r();IntArray(2) { nval.toInt() } }
+        newDp[0][0] += maxOf(dp[0][0], dp[1][0])
+        newDp[0][1] += minOf(dp[0][1], dp[1][1])
+        newDp[1][0] += maxOf(dp[0][0], dp[1][0], dp[2][0])
+        newDp[1][1] += minOf(dp[0][1], dp[1][1], dp[2][1])
+        newDp[2][0] += maxOf(dp[1][0], dp[2][0])
+        newDp[2][1] += minOf(dp[1][1], dp[2][1])
+        newDp.copyInto(dp)
+    }
+    print("${dp.maxOf { it[0] }} ${dp.minOf { it[1] }}")
 }
 
 /*

@@ -13,19 +13,13 @@ HashMap을 통해 데이터를 추가했고, 방문했던 컴퓨터는 HashMap.k
 
 */
 
-package baekjoon_kotlin
-
-import java.io.BufferedReader
-import java.io.InputStreamReader
-
-fun main() {
-    val br = BufferedReader(InputStreamReader(System.`in`))
+fun main() = java.io.BufferedReader(System.`in`.bufferedReader()).run {
     readLine()
     val computer = HashMap<Int, IntArray>()
-    repeat(br.readLine().toInt()) {
-        val (a, b) = br.readLine().split(" ").map { it.toInt() - 1 }
-        computer[b] = if (b in computer.keys) computer[b]!!.plus(a) else intArrayOf(a)
-        computer[a] = if (a in computer.keys) computer[a]!!.plus(b) else intArrayOf(b)
+    repeat(readLine().toInt()) {
+        val (a, b) = readLine().split(" ").map { it.toInt() - 1 }
+        computer[b] = computer.getOrDefault(b, intArrayOf()) + a
+        computer[a] = computer.getOrDefault(a, intArrayOf()) + b
     }
 
     val queue = ArrayDeque<Int>()
@@ -35,7 +29,7 @@ fun main() {
     var count = 0
     while (queue.isNotEmpty()) {
         val visit = queue.removeFirst()
-        for (nextVisit in computer[visit]!!) {
+        for (nextVisit in computer[visit] ?: intArrayOf()) {
             if (nextVisit !in visited) {
                 queue.add(nextVisit)
                 visited[nextVisit] = 0
@@ -43,8 +37,9 @@ fun main() {
             }
         }
     }
-    println(count)
+    print(count)
 }
+
 /*
 4
 4

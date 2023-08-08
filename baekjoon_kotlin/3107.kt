@@ -11,7 +11,7 @@ padEnd도 마찬가지이다.
 
 */
 
-fun main() = System.`in`.bufferedReader().run {
+/*fun main() = System.`in`.bufferedReader().run {
     val ip = readLine().split(":")
     val sb = StringBuilder()
     for (i in ip.indices)
@@ -20,8 +20,34 @@ fun main() = System.`in`.bufferedReader().run {
         else
             sb.append(ip[i].padStart(4, '0') + ":")
     print(sb.deleteAt(39))
+}*/
+
+fun main() {
+    val ipv6 = readln().split(":").toMutableList()
+    if (ipv6.size < 8) {
+        val index = ipv6.indexOfFirst { it.isEmpty() }
+        ipv6.addAll(index, List(8 - ipv6.size) { "" })
+    } else if (ipv6.size > 8) {
+        ipv6.remove("")
+    }
+    print(ipv6.joinToString(":") { it.padStart(4, '0') })
 }
 
 /*
+25:09:1985:aa:091:4846:374:bb
 
+0025:0009:1985:00aa:0091:4846:0374:00bb
+
+
+::1
+
+0000:0000:0000:0000:0000:0000:0000:0001
+
+
+1:2::1
+
+0001:0000:0000:0000:0000:0000:0000:0001
+
+
+::2:1:1:2:1:21:1
 */
