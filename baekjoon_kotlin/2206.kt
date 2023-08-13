@@ -11,9 +11,7 @@ https://www.acmicpc.net/problem/2206
 
 */
 
-package baekjoon_kotlin
-
-fun main() = System.`in`.bufferedReader().run {
+/*fun main() = System.`in`.bufferedReader().run {
     data class Data(val x: Int, val y: Int, val hit: Int = 1)
 
     val (n, m) = readLine().split(" ").map { it.toInt() }
