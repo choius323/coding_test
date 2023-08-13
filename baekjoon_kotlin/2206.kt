@@ -49,6 +49,42 @@ https://www.acmicpc.net/problem/2206
         }
     }
     println(-1)
+}*/
+
+fun main() = System.`in`.bufferedReader().run {
+    data class Pos(val x: Int, val y: Int, val isBreak: Int)
+
+    val dx = intArrayOf(-1, 1, 0, 0)
+    val dy = intArrayOf(0, 0, -1, 1)
+    val (n, m) = readLine().split(" ").map { it.toInt() }
+    val map = Array(n) { readLine() }
+    val visited = Array(n) { Array(m) { BooleanArray(2) } }
+    val queue = ArrayDeque<Pos>()
+    queue.add(Pos(0, 0, 0))
+    visited[0][0][0] = true
+    var count = 1
+    while (queue.isNotEmpty()) {
+        repeat(queue.size) {
+            val pos = queue.removeFirst()
+            if (pos.x == m - 1 && pos.y == n - 1) return print(count)
+            for (d in 0..3) {
+                val nx = pos.x + dx[d]
+                val ny = pos.y + dy[d]
+                if (nx in 0 until m && ny in 0 until n) {
+                    if (map[ny][nx] == '0' && visited[ny][nx][pos.isBreak].not()) {
+                        visited[ny][nx][pos.isBreak] = true
+                        queue.add(Pos(nx, ny, pos.isBreak))
+                    }
+                    if (map[ny][nx] == '1' && visited[ny][nx][1].not() && pos.isBreak == 0) {
+                        visited[ny][nx][1] = true
+                        queue.add(Pos(nx, ny, 1))
+                    }
+                }
+            }
+        }
+        count++
+    }
+    print(-1)
 }
 
 /*
