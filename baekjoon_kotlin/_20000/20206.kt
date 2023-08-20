@@ -27,7 +27,7 @@ https://ddoongi.tistory.com/245
 
 */
 
-package baekjoon_kotlin
+package baekjoon_kotlin._20000
 
 fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
     fun i(): Int {

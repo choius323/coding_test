@@ -8,7 +8,7 @@ when을 사용하는 방법도 있다.
 
 */
 
-package baekjoon_kotlin
+package baekjoon_kotlin._17000
 
 fun main() = System.`in`.bufferedReader().run {
     val str = readLine()

@@ -1,4 +1,4 @@
-/*
+package baekjoon_kotlin._17000/*
 
 17614번 - 369
 https://www.acmicpc.net/problem/17614

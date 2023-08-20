@@ -1,4 +1,4 @@
-/*
+package baekjoon_kotlin._16000/*
 
 16139번 - 인간-컴퓨터 상호작용
 https://www.acmicpc.net/problem/16139

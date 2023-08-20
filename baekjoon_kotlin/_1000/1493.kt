@@ -1,4 +1,6 @@
-package baekjoon_kotlin._1000/*
+package baekjoon_kotlin._1000
+
+/*
 
 1493번 - 박스 채우기
 https://www.acmicpc.net/problem/1493

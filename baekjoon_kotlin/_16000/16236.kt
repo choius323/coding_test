@@ -11,7 +11,7 @@ https://www.acmicpc.net/problem/16236
 
 */
 
-package baekjoon_kotlin
+package baekjoon_kotlin._16000
 
 import java.io.StreamTokenizer
 

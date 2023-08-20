@@ -1,4 +1,4 @@
-/*
+package baekjoon_kotlin._17000/*
 
 17074번 - 정렬
 https://www.acmicpc.net/problem/17074

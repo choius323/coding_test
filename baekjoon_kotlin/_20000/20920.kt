@@ -1,4 +1,4 @@
-/*
+package baekjoon_kotlin._20000/*
 
 20920번 - 영단어 암기는 괴로워
 https://www.acmicpc.net/problem/20920

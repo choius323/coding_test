@@ -1,4 +1,4 @@
-/*
+package baekjoon_kotlin._20000/*
 
 20113번 - 긴급 회의
 https://www.acmicpc.net/problem/20113

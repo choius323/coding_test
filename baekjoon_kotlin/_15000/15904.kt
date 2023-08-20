@@ -1,4 +1,4 @@
-/*
+package baekjoon_kotlin._15000/*
 
 15904번 - UCPC는 무엇의 약자일까?
 https://www.acmicpc.net/problem/15904

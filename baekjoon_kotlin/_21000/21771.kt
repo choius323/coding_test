@@ -1,4 +1,4 @@
-/*
+package baekjoon_kotlin._21000/*
 
 21771번 - 가희야 거기서 자는 거 아니야
 https://www.acmicpc.net/problem/21771

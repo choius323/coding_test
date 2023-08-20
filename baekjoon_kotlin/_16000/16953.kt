@@ -12,7 +12,7 @@ https://www.acmicpc.net/problem/16953
 
 */
 
-package baekjoon_kotlin
+package baekjoon_kotlin._16000
 
 fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
     fun i(): Int {

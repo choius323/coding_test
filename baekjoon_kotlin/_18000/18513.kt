@@ -1,4 +1,4 @@
-/*
+package baekjoon_kotlin._18000/*
 
 18513번 - 샘터
 https://www.acmicpc.net/problem/18513

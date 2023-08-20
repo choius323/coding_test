@@ -8,7 +8,7 @@ https://www.acmicpc.net/problem/2527
 
 */
 
-package baekjoon_kotlin
+package baekjoon_kotlin._15000
 
 private data class Rect(val x1: Int, val y1: Int, val x2: Int, val y2: Int)
 

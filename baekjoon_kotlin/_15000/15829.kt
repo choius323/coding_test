@@ -1,4 +1,4 @@
-/*
+package baekjoon_kotlin._15000/*
 
 15829번 - Hashing
 https://www.acmicpc.net/problem/15829

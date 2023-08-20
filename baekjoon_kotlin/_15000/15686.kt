@@ -1,4 +1,4 @@
-/*
+package baekjoon_kotlin._15000/*
 
 15686번 - 치킨 배달
 https://www.acmicpc.net/problem/15686
@@ -11,7 +11,7 @@ https://velog.io/@choius323/Kotlin-백준-15686번-치킨-배달
 
 */
 
-import kotlin.math.abs
+/*import kotlin.math.abs
 
 fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
     data class Pos(val x: Int, val y: Int) //좌표를 저장할 클래스
@@ -60,6 +60,37 @@ fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
     }
     dfs(0, 0)
     print(ans)
+}*/
+
+fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
+    data class Pos(val x: Int, val y: Int) {
+        fun dist(o: Pos): Int = Math.abs(x - o.x) + Math.abs(y - o.y)
+    }
+
+    val r = { nextToken();nval.toInt() }
+    val n = r()
+    val m = r()
+    val homes = ArrayList<Pos>()
+    val chickens = ArrayList<Pos>()
+    for (y in 0 until n) for (x in 0 until n) {
+        when (r()) {
+            1 -> homes.add(Pos(x, y))
+            2 -> chickens.add(Pos(x, y))
+        }
+    }
+    var min = 9999
+    fun dfs(index: Int, count: Int, dists: IntArray) {
+        if (count == m) {
+            min = minOf(min, dists.sum())
+            return
+        }
+        for (i in index until chickens.size) {
+            val nDists = IntArray(homes.size) { minOf(dists[it], homes[it].dist(chickens[i])) }
+            dfs(i + 1, count + 1, nDists)
+        }
+    }
+    dfs(0, 0, IntArray(homes.size) { 100 })
+    print(min)
 }
 
 /*

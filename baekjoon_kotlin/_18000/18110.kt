@@ -1,4 +1,4 @@
-/*
+package baekjoon_kotlin._18000/*
 
 18110번 - solved.ac
 https://www.acmicpc.net/problem/18110

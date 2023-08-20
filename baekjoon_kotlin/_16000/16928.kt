@@ -1,4 +1,4 @@
-/*
+package baekjoon_kotlin._16000/*
 
 16928번 - 뱀과 사다리 게임
 https://www.acmicpc.net/problem/16928

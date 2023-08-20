@@ -1,4 +1,4 @@
-/*
+package baekjoon_kotlin._17000/*
 
 17218번 - 비밀번호 만들기
 https://www.acmicpc.net/problem/17218

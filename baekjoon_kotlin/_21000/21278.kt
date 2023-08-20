@@ -1,4 +1,4 @@
-/*
+package baekjoon_kotlin._21000/*
 
 21278번 - 호석이 두 마리 치킨
 https://www.acmicpc.net/problem/21278
