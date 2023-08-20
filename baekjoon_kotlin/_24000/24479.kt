@@ -1,3 +1,5 @@
+package baekjoon_kotlin._24000
+
 /*
 
 24479번 - 알고리즘 수업 - 깊이 우선 탐색 1
