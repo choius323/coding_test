@@ -1,13 +1,19 @@
-package baekjoon_kotlin._2000/*
+package baekjoon_kotlin._2000
+
+/*
 
 2206번 - 벽 부수고 이동하기
 https://www.acmicpc.net/problem/2206
+분류 : 그래프 이론, 그래프 탐색, 너비 우선 탐색
 
 길을 진행하면서 벽을 만났을 때 고려할 것은 이번에 벽을 부술지, 다음에 벽을 부술지 선택해야 한다.
 벽을 부수고 빠르게 지나갔던 길을 벽을 안 부수고 진행해서 늦었을 때 그 경우를 버리게 되면, 다음에 필요한 벽을 부수지 못한다.
 따라서 벽을 부수지 않은 경우는 많이 늦더라도 버리고 진행하면 안 된다.
 
 1<=m<=1000이기 때문에 Int로 받은 다음 String으로 변환하면 결과가 이상하게 나올 수 있다. 조심하자...
+
+
+visited를 벽을 부순 횟수 저장하는 배열로 사용하면 더 편하게 할 수 있다.
 
 */
 
@@ -51,7 +57,7 @@ https://www.acmicpc.net/problem/2206
     println(-1)
 }*/
 
-fun main() = System.`in`.bufferedReader().run {
+/*fun main() = System.`in`.bufferedReader().run {
     data class Pos(val x: Int, val y: Int, val isBreak: Int)
 
     val dx = intArrayOf(-1, 1, 0, 0)
@@ -85,7 +91,43 @@ fun main() = System.`in`.bufferedReader().run {
         count++
     }
     print(-1)
+}*/
+
+fun main() = System.`in`.bufferedReader().run {
+    data class Pos(val x: Int, val y: Int, val breakCount: Int)
+    val (n, m) = readLine().split(" ").map { it.toInt() }
+    val map = Array(n) { readLine() }
+    val dx = intArrayOf(-1, 1, 0, 0)
+    val dy = intArrayOf(0, 0, -1, 1)
+    val visited = Array(n) { IntArray(m) { 2 } } // 부순 횟수
+    val deque = ArrayDeque<Pos>()
+    deque += Pos(0, 0, 0)
+    visited[0][0] = 0
+
+    var count = 0
+    while (deque.isNotEmpty()) {
+        count++
+        repeat(deque.size) {
+            val pos = deque.removeFirst()
+            if (pos.x == m - 1 && pos.y == n - 1) {
+                print(count)
+                return@run
+            }
+            for (d in 0..3) {
+                val nx = pos.x + dx[d]
+                val ny = pos.y + dy[d]
+                if (nx < 0 || nx >= m || ny < 0 || ny >= n) continue
+                val nk = pos.breakCount + (if (map[ny][nx] == '0') 0 else 1)
+                if (nk <= 1 && visited[ny][nx] > nk) {
+                    visited[ny][nx] = nk
+                    deque.add(Pos(nx, ny, nk))
+                }
+            }
+        }
+    }
+    print(-1)
 }
+
 
 /*
 5 6
