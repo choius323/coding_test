@@ -19,7 +19,6 @@ fun main() {
     readln().forEachIndexed { index, c ->
         indices[c - 'a'].add(index)
     }
-    indices.forEach { it.sort() }
 
     var answer = Int.MAX_VALUE
     fun recur(cursor: Int, index: Int, count: Int) {
