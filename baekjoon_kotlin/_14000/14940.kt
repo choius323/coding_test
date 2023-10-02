@@ -8,6 +8,7 @@ https://www.acmicpc.net/problem/14940
 
 한 지점 A에서 목표 지점까지의 거리는 목표 지점에서 A까지의 거리와 같다.
 따라서 목표 지점에서 BFS를 시작해서 다른 모든 지점까지의 거리를 저장해둔 뒤 출력한다.
+편의를 위해 빈 공간을 -1, 목표 지점을 0으로 바꾸고 시작했다.
 
 */
 
@@ -20,7 +21,7 @@ fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
     val queue = ArrayDeque<Pos>()
     val map = Array(n) { y ->
         IntArray(m) { x ->
-            when (val num = r()) {
+            when (r()) {
                 0 -> 0
                 1 -> -1
                 else -> {
