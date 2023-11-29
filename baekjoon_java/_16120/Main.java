@@ -23,11 +23,11 @@ public class Main {
             if (c == 'P') {
                 if (findA) {
                     countP--;
-                    findA = false;
                 } else {
                     countP++;
                 }
-            } else {
+                findA = false;
+            } else { // A
                 if (countP < 2 || findA) {
                     answer = "NP";
                     break;
