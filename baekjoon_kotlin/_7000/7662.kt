@@ -18,30 +18,27 @@ Map의 한 종류이기 때문에 삽입이 매우 빠르고 사용도 간편하
 
 package baekjoon_kotlin._7000
 
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.util.*
-
-fun main() {
-    val br = BufferedReader(InputStreamReader(System.`in`))
-    val arr = TreeMap<Int, Int>()
-    repeat(br.readLine().toInt()) {
-        repeat(br.readLine().toInt()) {
-            val (c, n) = br.readLine().split(" ")
-            if (c == "I") {
-                arr += Pair(n.toInt(), arr.getOrDefault(n.toInt(), 0) + 1)
+fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
+    val r = { nextToken();nval.toInt() }
+    val s = { r();sval }
+    val sb = StringBuilder()
+    repeat(r()) {
+        val arr = java.util.TreeMap<Int, Int>()
+        repeat(r()) {
+            val c = s()
+            val n = r()
+            if (c[0] == 'I') {
+                arr += n to (arr[n] ?: 0) + 1
             } else if (arr.size > 0) {
-                val key = if (n == "1") arr.lastKey() else arr.firstKey()
-                if (arr[key]!! > 1) {
-                    arr[key] = arr[key]!! - 1
-                } else {
-                    arr.remove(key)
+                val entry = if (n == 1) arr.pollLastEntry() else arr.pollFirstEntry()
+                if (entry.value > 1) {
+                    arr += entry.key to entry.value - 1
                 }
             }
         }
-        println(if (arr.isEmpty()) "EMPTY" else "${arr.lastKey()} ${arr.firstKey()}")
-        arr.clear()
+        sb.appendLine(if (arr.isEmpty()) "EMPTY" else "${arr.lastKey()} ${arr.firstKey()}")
     }
+    print(sb)
 }
 
 //fun main() {
