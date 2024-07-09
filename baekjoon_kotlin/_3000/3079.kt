@@ -10,6 +10,8 @@ https://www.acmicpc.net/problem/3079
 left와 right를 총 심사에 걸리는 시간으로 두고 탐색을 하며, 해당 시간 동안 총 심사 인원을 매개변수 탐색을 했다.
 시간의 최솟값을 찾아야 하므로 right를 최대한 mid쪽으로 이동한다.
 
+time은 최대 10^9, m은 최대 10^6이기 때문에 times.max() * m은 Long 범위를 넘어갈 수 있다.
+
 */
 
 fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {

@@ -35,17 +35,17 @@ fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
         return true
     }
 
-    fun permutation(str: String): String {
+    fun recur(str: String): String {
         if (check(str).not()) return ""
         else if (str.length == n) return str
         for (i in 1..3) {
-            val answer = permutation(str + i)
+            val answer = recur(str + i)
             if (answer.isNotEmpty()) return answer
         }
         return ""
     }
 
-    println(permutation(""))
+    println(recur(""))
 }
 
 /*
