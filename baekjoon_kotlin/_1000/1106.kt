@@ -16,37 +16,61 @@ dp에 저장하는 값은 이전 광고의 현재 비용일 때 인원, 이전 �
 */
 
 fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
-    data class Ad(val cost: Int, val num: Int)
+    data class Ad(val cost: Int, val people: Int)
 
-    fun i(): Int {
-        nextToken()
-        return nval.toInt()
-    }
-
-    val c = i()
-    val n = i()
-    val ads = List(n) { Ad(i(), i()) }.sortedBy { -it.cost } //역순으로 해야 DP가 0부터 데이터가 제대로 축적된다.
-    var ans = 100000
-    var dp = IntArray(ans + 1) // 인덱스 : 가격, 값 : 인원
-    for ((cost, num) in ads) {
-        val next = IntArray(ans + 1)
-        for (nCost in cost..ans) {
-            next[nCost] = maxOf(dp[nCost], dp[nCost - cost] + num, next[nCost - cost] + num)
-            if (next[nCost] >= c && ans > nCost) {
-                ans = nCost
-                break
+    val r = { nextToken(); nval.toInt() }
+    val c = r() // 필요 인원 수
+    val n = r() // 홍보 경우의 수
+    val ads = Array(n) { Ad(r(), r()) }
+    val dp = IntArray(c + ads.maxOf(Ad::people) + 1) { 100_000 } // 인덱스:인원 수, 값:필요한 최소 비용
+    dp[0] = 0
+    var answer = 100_000
+    for (people in 1..dp.lastIndex) {
+        for (ad in ads) {
+            if (people >= ad.people) {
+                val cost = dp[people - ad.people] + ad.cost
+                dp[people] = minOf(dp[people], cost)
+                if (c <= people) {
+                    answer = minOf(answer, cost)
+                }
             }
         }
-        dp = next
     }
-//    for (i in 0 until dp.size/5) {
-//        print(("${i*5} : ").padStart(5, ' '))
-//        for (j in 0..4)
-//            print("${(dp[i * 5 + j]).toString().padStart(3, ' ')} ")
-//        println()
-//    }
-    print(ans)
+    print(answer)
 }
+
+//fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
+//    data class Ad(val cost: Int, val num: Int)
+//
+//    fun i(): Int {
+//        nextToken()
+//        return nval.toInt()
+//    }
+//
+//    val c = i()
+//    val n = i()
+//    val ads = List(n) { Ad(i(), i()) }.sortedBy { -it.cost } //역순으로 해야 DP가 0부터 데이터가 제대로 축적된다.
+//    var ans = 100000
+//    var dp = IntArray(ans + 1) // 인덱스 : 가격, 값 : 인원
+//    for ((cost, num) in ads) {
+//        val next = IntArray(ans + 1)
+//        for (nCost in cost..ans) {
+//            next[nCost] = maxOf(dp[nCost], dp[nCost - cost] + num, next[nCost - cost] + num)
+//            if (next[nCost] >= c && ans > nCost) {
+//                ans = nCost
+//                break
+//            }
+//        }
+//        dp = next
+//    }
+////    for (i in 0 until dp.size/5) {
+////        print(("${i*5} : ").padStart(5, ' '))
+////        for (j in 0..4)
+////            print("${(dp[i * 5 + j]).toString().padStart(3, ' ')} ")
+////        println()
+////    }
+//    print(ans)
+//}
 
 
 // 출처 : https://www.acmicpc.net/source/40253462
@@ -80,6 +104,9 @@ fun main() = java.io.StreamTokenizer(System.`in`.bufferedReader()).run {
 /*
 100 1
 1000 1
+
+100000
+
 
 100 3
 7 12
