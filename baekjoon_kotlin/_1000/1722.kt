@@ -43,9 +43,9 @@ fun main() {
         val useNums = MutableList(n) { it + 1 }
         var answer = 1L
         for (idx in 0 until n) {
+            val kind = kinds[idx + 1]
             val step = useNums.indexOf(inputNums[idx])
             useNums.remove(inputNums[idx])
-            val kind = kinds[idx + 1]
             answer += kind * step
         }
         print(answer)
@@ -86,6 +86,8 @@ fun main() {
 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1
 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1
 
+2432902008176639999
 2432902008176640000
+2432902008176640001
 
 */
